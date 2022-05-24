@@ -18,10 +18,9 @@ function App() {
     <Switch>
       <Route exact path="/" component={PageAccueil} />
       <Route exact path="/chambres/" component={Chambres} />
-      <Route exact path="/chambres/:ch" component={ChambreSeule} />
+      <Route exact path="/chambres/:slug" component={ChambreSeule} />
       <Route component={Erreur} />
     </Switch>
-      
     </>
   );
 }
