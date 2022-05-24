@@ -1,24 +1,28 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+
+import PageAccueil from "./pages/PageAccueil";
+import Chambres from "./pages/Chambres";
+import ChambreSeule from "./pages/ChambreSeule";
+import Erreur from "./pages/Erreur";
+
+import { Route, Switch } from 'react-router-dom'
+
+import Navigation from "./components/Navigation";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Navigation />
+    
+    <Switch>
+      <Route exact path="/" component={PageAccueil} />
+      <Route exact path="/chambres/" component={Chambres} />
+      <Route exact path="/chambres/:ch" component={ChambreSeule} />
+      <Route component={Erreur} />
+    </Switch>
+      
+    </>
   );
 }
 
