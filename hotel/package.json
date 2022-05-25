@@ -12,6 +12,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.1",
     "react-service-worker": "^0.1.1",
+    "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
