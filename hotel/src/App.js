@@ -1,27 +1,12 @@
-import React from "react";
+import logo from './logo.svg';
 import './App.css';
+import Formulaire from './Formulaire/Formulaire.js';
 
-import PageAccueil from "./pages/PageAccueil";
-import Chambres from "./pages/Chambres";
-import ChambreSeule from "./pages/ChambreSeule";
-import Erreur from "./pages/Erreur";
-
-import { Route, Switch } from 'react-router-dom'
-
-import Navigation from "./components/Navigation";
-
-function App() {
+const App = () => {
   return (
-    <>
-    <Navigation />
-    
-    <Switch>
-      <Route exact path="/" component={PageAccueil} />
-      <Route exact path="/chambres/" component={Chambres} />
-      <Route exact path="/chambres/:slug" component={ChambreSeule} />
-      <Route component={Erreur} />
-    </Switch>
-    </>
+    <div className="App">
+      <Formulaire/>
+    </div>
   );
 }
 
