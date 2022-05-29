@@ -1,6 +1,7 @@
 import React from 'react'
 import Chambre from './Chambre'
-export default function ChambreList({rooms}) {
+
+export default function ChambreList({ rooms }) {
   if(rooms.length === 0){
     return (
       <div className="empty-search">
@@ -8,12 +9,15 @@ export default function ChambreList({rooms}) {
       </div>
       )
   }
+
+
+
   return (
     <section className="roomslist">
       <div className="roomslist-center">
         {
-          rooms.map(item =>{
-            return <Chambre key={item.id} room={item}/>;
+          rooms.map(item => {
+            return <Chambre key={ item.id } room={ item }/>;
           })
         }
       </div>

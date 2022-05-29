@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Banniere from "../components/Banniere";
 import Hero from "../components/Hero";
 import ChambreContainer from "../components/ChambreContainer";
+
 const Chambres = () => {
   return (
     <>

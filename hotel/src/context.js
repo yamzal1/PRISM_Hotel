@@ -19,6 +19,52 @@ export default class RoomProvider extends Component {
     pets: false
   };
 
+  getAllRooms = async () => {
+    var headers = new Headers();
+    headers.append("cache-control", "no-cache");
+    headers.append("x-apikey", "62348bc0dced170e8c83a37c");
+
+    fetch("https://pommedeterre-20df.restdb.io/rest/chambre", {
+        method: 'GET',
+        headers: headers,
+        mode: 'cors',
+        cache: 'default'
+      })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          let rooms = this.formatRestDBData(result);
+          let featuredRooms = rooms.filter(room => room.featured === true);
+          let maxPrice = Math.max(...rooms.map(item => item.price));
+          let maxSize = Math.max(...rooms.map(item => item.size));
+          this.setState({
+            rooms,
+            featuredRooms,
+            sortedRooms: rooms,
+            loading: false,
+            price: maxPrice,
+            maxPrice,
+            maxSize
+          });
+
+          // this.setState({
+          //   isLoaded: true,
+          //   items: result.items
+          // });
+        },
+        // Remarque : il est important de traiter les erreurs ici
+        // au lieu d'utiliser un bloc catch(), pour ne pas passer à la trappe
+        // des exceptions provenant de réels bugs du composant.
+        (error) => {
+          console.log(error)
+          // this.setState({
+          //   isLoaded: true,
+          //   error
+          // });
+        }
+    )
+  }
+
   // getData = async () => {
   //   try {
   //     let response = await Client.getEntries({
@@ -46,22 +92,22 @@ export default class RoomProvider extends Component {
   // };
 
   componentDidMount() {
-    // this.getData();
-    let rooms = this.formatData(items);
-    let featuredRooms = rooms.filter(room => room.featured === true);
-    //
-    let maxPrice = Math.max(...rooms.map(item => item.price));
-    let maxSize = Math.max(...rooms.map(item => item.size));
-    this.setState({
-      rooms,
-      featuredRooms,
-      sortedRooms: rooms,
-      loading: false,
-      //
-      price: maxPrice,
-      maxPrice,
-      maxSize
+    this.getAllRooms();
+  }
+
+  formatRestDBData(items) {
+    let tempItems = items.map(item => {
+      console.log(item)
+
+      let id = item.id;
+      let images = item.images.map(image => image.fields.file.url);
+
+      let room = { ...item, images, id };
+
+      return room;
     });
+
+    return tempItems;
   }
 
   formatData(items) {
@@ -74,11 +120,13 @@ export default class RoomProvider extends Component {
     });
     return tempItems;
   }
+
   getRoom = slug => {
     let tempRooms = [...this.state.rooms];
     const room = tempRooms.find(room => room.slug === slug);
     return room;
   };
+
   handleChange = event => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
@@ -92,6 +140,7 @@ export default class RoomProvider extends Component {
       this.filterRooms
     );
   };
+
   filterRooms = () => {
     let {
       rooms,
@@ -135,6 +184,7 @@ export default class RoomProvider extends Component {
       sortedRooms: tempRooms
     });
   };
+
   render() {
     return (
       <RoomContext.Provider
@@ -149,6 +199,7 @@ export default class RoomProvider extends Component {
     );
   }
 }
+
 const RoomConsumer = RoomContext.Consumer;
 
 export { RoomProvider, RoomConsumer, RoomContext };

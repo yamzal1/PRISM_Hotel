@@ -14,12 +14,12 @@ function App() {
   return (
     <>
     <Navigation />
-    
+
     <Switch>
-      <Route exact path="/" component={PageAccueil} />
-      <Route exact path="/chambres/" component={Chambres} />
-      <Route exact path="/chambres/:slug" component={ChambreSeule} />
-      <Route component={Erreur} />
+      <Route exact path="/" component={ PageAccueil } />
+      <Route exact path="/chambres/" component={ Chambres } />
+      <Route exact path="/chambres/:slug" component={ ChambreSeule } />
+      <Route component={ Erreur } />
     </Switch>
     </>
   );
