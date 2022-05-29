@@ -7,7 +7,6 @@ export default class RoomProvider extends Component {
     sortedRooms: [],
     featuredRooms: [],
     loading: true,
-    //
     type: "all",
     capacity: 1,
     price: 0,
@@ -46,21 +45,81 @@ export default class RoomProvider extends Component {
             maxPrice,
             maxSize
           });
-
-          // this.setState({
-          //   isLoaded: true,
-          //   items: result.items
-          // });
         },
-        // Remarque : il est important de traiter les erreurs ici
-        // au lieu d'utiliser un bloc catch(), pour ne pas passer à la trappe
-        // des exceptions provenant de réels bugs du composant.
         (error) => {
           console.log(error)
-          // this.setState({
-          //   isLoaded: true,
-          //   error
-          // });
+        }
+    )
+  }
+
+  createNewRoom = async () => {
+    var headers = new Headers();
+    headers.append("cache-control", "no-cache");
+    headers.append("content-type", "application/json")
+    headers.append("x-apikey", "62348bc0dced170e8c83a37c");
+
+    var newChambre = {
+      "description": "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
+      "name": "single basic",
+      "slug": "single_basic",
+      "type": "single",
+      "price": 100,
+      "size": 200,
+      "capacity": 1,
+      "pets": false,
+      "breakfast": false,
+      "featured": false,
+      "extras": [
+        "Plush pillows and breathable bed linens",
+        "Soft, oversized bath towels",
+        "Full-sized, pH-balanced toiletries",
+        "Complimentary refreshments",
+        "Adequate safety/security",
+        "Internet",
+        "Comfortable beds"
+      ],
+      "images": [
+        {
+          "fields": {
+            "file": {
+              "url": "https://picsum.photos/300/200"
+            }
+          }
+        },
+        {
+          "fields": {
+            "file": {
+              "url": "https://picsum.photos/300/200"
+            }
+          }
+        },
+        {
+          "fields": {
+            "file": {
+              "url": "https://picsum.photos/300/200"
+            }
+          }
+        },
+        {
+          "fields": {
+            "file": {
+              "url": "https://picsum.photos/300/200"
+            }
+          }
+        }
+      ]
+    }
+
+    fetch("https://pommedeterre-20df.restdb.io/rest/chambre", {
+        method: 'POST',
+        headers: headers,
+        mode: 'cors',
+        cache: 'default',
+        body: JSON.stringify(newChambre)
+      })
+      .then(
+        (error) => {
+          console.log(error)
         }
     )
   }
@@ -93,12 +152,11 @@ export default class RoomProvider extends Component {
 
   componentDidMount() {
     this.getAllRooms();
+    // this.createNewRoom();
   }
 
   formatRestDBData(items) {
     let tempItems = items.map(item => {
-      console.log(item)
-
       let id = item.id;
       let images = item.images.map(image => image.fields.file.url);
 
@@ -118,6 +176,7 @@ export default class RoomProvider extends Component {
       let room = { ...item.fields, images, id };
       return room;
     });
+
     return tempItems;
   }
 
@@ -131,7 +190,7 @@ export default class RoomProvider extends Component {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-    console.log(name, value);
+    // console.log(name, value);
 
     this.setState(
       {
