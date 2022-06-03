@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> Paiement </title>
+	</head>
+	<body>
+		<form>
+			<h1 style='font-family: Parisine;'> Paiement </h1>
+			<p style='font-family: Arial;'>
+				Nom : <input type='text'  name='nom' /> <br /> <br />
+				Prénom : <input type='text'  name='prenom' /> <br /> <br />
+				Adresse de facturation : <input type='text'  name='adr' /> <br /> <br />
+				Numéro de votre carte bancaire : <input type='text'  name='cb' style='width: 500px;' placeholder='Ce numéro ne doit comporter que des chiffres parmi les 16 caractères' /> <br /> <br />
+				Code de sécurité <i>(les 3 derniers chiffres au dos de votre carte)</i> : <input type='text' style='width: 300px;' name='code' placeholder='Ce numéro ne doit comporter que des chiffres' /> <br /> <br />
+				Date de fin de validité : <input type='date'  name='date' /> <br /> <br />
+				<input type='submit' method='POST' value='Valider le paiement' />
+			</p>
+		</form>
+	</body>
+</html>
