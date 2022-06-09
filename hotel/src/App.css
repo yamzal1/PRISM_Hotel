@@ -52,7 +52,27 @@ h6 {
   font-weight: bold;
   margin-bottom: 1.5em;
 }
+form {
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 20px;
+}
 
+input {
+	background: #f9f9f9;
+	padding: 10px;
+	width: 100%;
+	border: none;
+	margin-bottom: 20px;
+	font-size: 14px;
+	color: rgb(0, 0, 0);
+	outline: none;
+	font-weight: 300;
+}
+
+.rccs__card--unknown > div {
+	background: #75c9a5;
+}
 .btn-primary {
   display: inline-block;
   text-decoration: none;
