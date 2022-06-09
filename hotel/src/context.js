@@ -132,7 +132,7 @@ export default class RoomProvider extends Component {
   formatRestDBData(items) {
     let tempItems = items.map(item => {
       let id = item.id;
-      let images = item.images.map(image => 'https://pommedeterre-20df.restdb.io/media/' + image + '?s=t');
+      let images = item.images.map(image => image.fields.file.url);
 
       let room = { ...item, images, id };
 
