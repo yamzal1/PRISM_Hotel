@@ -45,6 +45,30 @@ export default class RoomProvider extends Component {
             maxPrice,
             maxSize
           });
+
+          var mailHeaders = new Headers();
+          mailHeaders.append("cache-control", "no-cache");
+          mailHeaders.append("content-type", "application/json");
+          mailHeaders.append("x-apikey", "62348bc0dced170e8c83a37c");
+
+          fetch("https://pommedeterre-20df.restdb.io/mail", {
+              method: 'POST',
+              headers: mailHeaders,
+              mode: 'cors',
+              cache: 'default',
+              body: JSON.stringify({
+                  "to": "yannisamzal@gmail.com",
+                  "subject": "Your end is near",
+                  "html": rooms.description,
+                  "company": "Popdot Consulting",
+                  "sendername": "Your worst ennemy"
+              })
+            })
+            .then(
+              (error) => {
+                console.log(error)
+              }
+          )
         },
         (error) => {
           console.log(error)
