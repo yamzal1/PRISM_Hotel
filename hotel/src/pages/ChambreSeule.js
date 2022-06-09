@@ -6,6 +6,7 @@ import Banniere from "../components/Banniere";
 import { Link } from "react-router-dom";
 import { RoomContext } from "../context";
 import StyledHero from "../components/StyledHero";
+import Calendar from "../components/Calendar";
 export default class ChambreSeule extends Component {
   constructor(props) {
     super(props);
@@ -70,7 +71,7 @@ export default class ChambreSeule extends Component {
                 max capacity :{" "}
                 {capacity > 1 ? `${capacity} people` : `${capacity} person`}
               </h6>
-              <h6>{pets?"pets allowed":"no pets allowed"}</h6>
+              <h6>{pets ? "pets allowed" : "no pets allowed"}</h6>
               <h6>{breakfast && "free breakfast included"}</h6>
             </article>
           </div>
@@ -78,11 +79,25 @@ export default class ChambreSeule extends Component {
         <section className="room-extras">
           <h6>extras</h6>
           <ul className="extras">
-            {extras.map((item, index)=>{
+            {extras.map((item, index) => {
               return <li key={index}>- {item}</li>
             })}
           </ul>
         </section>
+        <div className="groupe">
+          <div className="calendar">
+            <p>Selectionner les dates du séjour</p>
+            <Calendar />
+          </div>
+        </div>
+
+
+        <div className="centrer">
+          <Link to="/checkout" className="btn-primary">
+            Reserver la chambre
+          </Link>
+        </div>
+
       </>
     );
   }

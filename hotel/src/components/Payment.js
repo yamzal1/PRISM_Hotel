@@ -51,6 +51,19 @@ const MyCards = () => {
 					name="name"
 					placeholder="Your Name"
 					onChange={handleInputChange}
+				/>
+				<input
+					type="email"
+					name="email"
+					placeholder="Your Email"
+					pattern=".+@gmail.com"
+					onChange={handleInputChange}
+				/>
+				<input
+					type="text"
+					name="address"
+					placeholder="Your Address"
+					onChange={handleInputChange}
 				/>				
 			</form>
 		</div>
