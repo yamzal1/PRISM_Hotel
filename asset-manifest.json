@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PRISM_Hotel/static/css/main.689b9ef3.css",
-    "main.js": "/PRISM_Hotel/static/js/main.c675231a.js",
+    "main.js": "/PRISM_Hotel/static/js/main.21a66288.js",
     "static/js/787.48a3adfe.chunk.js": "/PRISM_Hotel/static/js/787.48a3adfe.chunk.js",
     "static/media/details-1.jpeg": "/PRISM_Hotel/static/media/details-1.c485174060e0cfd387f1.jpeg",
     "static/media/room-7.jpeg": "/PRISM_Hotel/static/media/room-7.d2c011f051d458d2d48a.jpeg",
@@ -24,11 +24,11 @@
     "static/media/logo.svg": "/PRISM_Hotel/static/media/logo.87947b58e786b5fa417693c41e0781e1.svg",
     "index.html": "/PRISM_Hotel/index.html",
     "main.689b9ef3.css.map": "/PRISM_Hotel/static/css/main.689b9ef3.css.map",
-    "main.c675231a.js.map": "/PRISM_Hotel/static/js/main.c675231a.js.map",
+    "main.21a66288.js.map": "/PRISM_Hotel/static/js/main.21a66288.js.map",
     "787.48a3adfe.chunk.js.map": "/PRISM_Hotel/static/js/787.48a3adfe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.689b9ef3.css",
-    "static/js/main.c675231a.js"
+    "static/js/main.21a66288.js"
   ]
 }
