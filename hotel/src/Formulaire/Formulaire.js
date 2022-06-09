@@ -1,118 +1,120 @@
 import React from 'react';
-import axios from 'axios';
 import '../App.css'
 
+
 class Formulaire extends React.Component {
-  handleSubmit() {
-//     var formObj = ("#email_outbound-form").serializeObject();
-//     var data = JSON.stringify(formObj);
- /*
-    var request = require("request");
 
-    var options = { method: 'POST',
-      url: 'https://dbhotel-bb79.restdb.io/rest/email_outbound',
-      headers: 
-       { 'cache-control': 'no-cache',
-         'x-apikey': '62a1b0851a51777906aff8ad',
-         'content-type': 'application/json' },
-      body: data,
-      json: true };
-    
-    request(options, function (error, response, body) {
-      if (error) throw new Error(error);
-    
-      console.log(body);
-    });
-*/
-    /*
-    var formObj = ("#email_outbound-form").serializeObject();
-    var data = JSON.stringify(formObj);
+  state = {
+    subject: '',
+    message: '',
+    sender: ''
+  };
 
-
-    var headers = new Headers();
-    headers.append("cache-control", "no-cache");
-    headers.append("x-apikey", "62a1b0851a51777906aff8ad");
-
-    fetch("https://dbhotel-bb79.restdb.io/rest/email_outbound", {
-        method: 'GET',
-        headers: 
-        { 'cache-control': 'no-cache',
-          'x-apikey': '62a1b0851a51777906aff8ad',
-          'content-type': 'application/json' },
-          body: data,
-        mode: 'cors',
-        cache: 'default'
-      })
-      .then(res => res.json())
-      .then(
-        (result) => {
-
-        },
-        (error) => {
-          console.log(error)
-        }
-    )
-    */
-    
-
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submitted");
 
     var mailHeaders = new Headers();
-    mailHeaders.append("cache-control", "no-cache");
-    mailHeaders.append("content-type", "application/json");
-    mailHeaders.append("x-apikey", "62348bc0dced170e8c83a37c");
+          mailHeaders.append("cache-control", "no-cache");
+          mailHeaders.append("content-type", "application/json");
+          mailHeaders.append("x-apikey", "62a1b0851a51777906aff8ad");
 
-    fetch("https://pommedeterre-20df.restdb.io/mail", {
-        method: 'POST',
-        headers: mailHeaders,
-        mode: 'cors',
-        cache: 'default',
-        body: JSON.stringify({
-            "to": "yannisamzal@gmail.com",
-            "subject": "Your end is near",
-            "html": "Stuff",
-            "company": "Popdot Consulting",
-            "sendername": "Your worst ennemy"
-        })
+    const { subject } = this.state;
+    const { message } = this.state;
+    const { sender } = this.state;
+
+
+    fetch("https://dbhotel-bb79.restdb.io/mail", {
+      method: 'POST',
+      headers: mailHeaders,
+      mode: 'cors',
+      cache: 'default',
+      body: JSON.stringify({
+          "to": "reactjshotel@yopmail.com",
+          "subject": JSON.stringify(subject),
+          "html": JSON.stringify(message),
+          "company": "Popdot Consulting",
+          "sendername": JSON.stringify(sender)
       })
-      .then(
-        (error) => {
-          console.log(error)
-        }
-    )
+    })
+    .then(
+      (error) => {
+        console.log(error)
+      }
+  )
 
+  };
 
-
-
-  }
-
+  
   render() {
+    const { subject } = this.state;
+    const { message } = this.state;
+    const { sender } = this.state;
+
     return (
-      <div class="h-screen bg-[#cfcfcf] pt-12">
+      <div>
+        <h1>Je deteste react</h1>
+        <form onSubmit={this.handleSubmit}>
+          
+         
 
-        <form role="form" id="email_outbound-form" onSubmit={this.handleSubmit}>
 
-          <div class="form-group">
-            <label>Objet : </label><input class="form-control" name="subject" data-type="text" type="text" required />
-          </div>
 
-          <div class="form-group">
-            <label>Message :</label>
-            <textarea wrap="hard" class="form-control" name="body" data-type="richtext" required></textarea>
-          </div>
+<div class="form-group">
+    <label>Objet : </label>
+    <textarea
+            required
+            type="text"
+            name="subject"
+            value={subject}
+            onChange={e => this.setState({
+              subject: e.target.value
+            })}
+          />
+  </div>
 
-          <div class="form-group">
-            <label>E-mail : </label><input class="form-control" name="to" data-type="email" type="email" required />
-          </div>
+  <div class="form-group">
+    <label>Message :</label>
+    <textarea
+            required
+            wrap="hard"
+            data-type="richtext"            
+            name="message"
+            class="form-control"
+            value={message}
+            onChange={e => this.setState({
+              message: e.target.value
+            })}
+          />
+  </div>
 
-          <div id="fg-errors" class="form-group">
-          </div>
+  <div class="form-group">
+    <label>E-mail : </label>
+    <textarea
+            required
+            data-type="email"   
+            type="email"         
+            name="sender"
+            class="form-control"
+            value={sender}
+            onChange={e => this.setState({
+              sender: e.target.value
+            })}
+          />
+  </div>
+
+  <div id="fg-errors" class="form-group">
+  </div>
+
+          <br />
           <button class="btn btn-primary btn-lg" id="btn-submit" type="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Submitting...">Submit</button>
         </form>
-
       </div>
-    );
-  }
 
+    );
+
+
+  }
 
 }
 
