@@ -3,95 +3,117 @@ import axios from 'axios';
 import '../App.css'
 
 class Formulaire extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        nom: '',
-        email: '',
-        objet: '',
-        message: ''
-      }
-    }
-  
-    handleSubmit(e){
-        e.preventDefault();
-        axios({
-          method: "POST",
-          url:"http://localhost:3000/send",
-          data:  this.state
-        }).then((response)=>{
-          if (response.data.status === 'success') {
-            alert("Message Sent.");
-            this.resetForm()
-          } else if (response.data.status === 'fail') {
-            alert("Message failed to send.")
-          }
-        })
-      }
-      resetForm(){
-        this.setState({nom: '', email: '', objet: '', message: ''})
-      }
-      
-    render() {
-      return(
-        <div class="h-screen bg-[#cfcfcf] pt-12">
-        <div class="flex">
-            <div class="w-1/2 ml-20 mt-8 mr-8"> 
-            <p class="text-center font-bold text-[28px] pb-6">Contactez nous</p>
-          <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
-            <div class="mb-3 pt-0">
-              <input type="text" class=" m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" value={this.state.name} onChange={this.onNameChange.bind(this)} placeholder="Nom"/>
-            </div>
-            <div class="mb-3 pt-0">
-              <input type="email" class="m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" aria-describedby="emailHelp" value={this.state.email} onChange={this.onEmailChange.bind(this)} placeholder="Email" />
-            </div>
-            <div class="mb-3 pt-0">
-              <input type="text" class=" m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" value={this.state.objet} onChange={this.onObjetChange.bind(this)} placeholder="Objet"/>
-            </div>
-            <div class="mb-3 pt-0">
-              <textarea class="m-2 form-flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" rows="5" value={this.state.message} onChange={this.onMessageChange.bind(this)} placeholder="Message" />
-            </div >
-            <div class="mb-3 pt-0">
-            <button type="submit" class="ml-48 justify-center py-2 px-4 bg-[#af9a7d] text-white w-1/2 duration-200 text-center font-semibold rounded-lg ">Envoyer</button>
-            </div>
-          </form>
-          </div>
-          <div class="rounded-xl bg-[#FAF3EF] w-1/3 p-6">         
-                <div>
-                    <p class="font-bold text-center text-xl"> Notre adresse </p>
-                    <p class="text-center"> 13 avenue des Sciences </p>
-                    <p class="text-center"> 91190 Gif-Sur-Yvette</p>
-                    <p class="font-bold text-center text-xl">Appelez nous </p>
-                    <p class="text-center mb-4"> +33 1 01 01 01 01</p>
-                    <div class="flex justify-center ">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2632.7113352753418!2d2.1686606514238176!3d48.710998118925346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67f538f1df01d%3A0xe5d2ea29a4e0ceb!2sIUT%20d&#39;Orsay!5e0!3m2!1sfr!2sfr!4v1652610451161!5m2!1sfr!2sfr" width="400" height="300" class="w-full b-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>  
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        </div>
-      );
-    }
-  
-    onNameChange(event) {
-      this.setState({nom: event.target.value})
-    }
-  
-    onEmailChange(event) {
-      this.setState({email: event.target.value})
-    }
+  handleSubmit() {
+//     var formObj = ("#email_outbound-form").serializeObject();
+//     var data = JSON.stringify(formObj);
+ /*
+    var request = require("request");
 
-    onObjetChange(event) {
-        this.setState({objet: event.target.value})
-    }
-  
-    onMessageChange(event) {
-      this.setState({message: event.target.value})
-    }
-  
-    handleSubmit(event) {
-    }
+    var options = { method: 'POST',
+      url: 'https://dbhotel-bb79.restdb.io/rest/email_outbound',
+      headers: 
+       { 'cache-control': 'no-cache',
+         'x-apikey': '62a1b0851a51777906aff8ad',
+         'content-type': 'application/json' },
+      body: data,
+      json: true };
+    
+    request(options, function (error, response, body) {
+      if (error) throw new Error(error);
+    
+      console.log(body);
+    });
+*/
+    /*
+    var formObj = ("#email_outbound-form").serializeObject();
+    var data = JSON.stringify(formObj);
+
+
+    var headers = new Headers();
+    headers.append("cache-control", "no-cache");
+    headers.append("x-apikey", "62a1b0851a51777906aff8ad");
+
+    fetch("https://dbhotel-bb79.restdb.io/rest/email_outbound", {
+        method: 'GET',
+        headers: 
+        { 'cache-control': 'no-cache',
+          'x-apikey': '62a1b0851a51777906aff8ad',
+          'content-type': 'application/json' },
+          body: data,
+        mode: 'cors',
+        cache: 'default'
+      })
+      .then(res => res.json())
+      .then(
+        (result) => {
+
+        },
+        (error) => {
+          console.log(error)
+        }
+    )
+    */
+    
+
+
+    var mailHeaders = new Headers();
+    mailHeaders.append("cache-control", "no-cache");
+    mailHeaders.append("content-type", "application/json");
+    mailHeaders.append("x-apikey", "62348bc0dced170e8c83a37c");
+
+    fetch("https://pommedeterre-20df.restdb.io/mail", {
+        method: 'POST',
+        headers: mailHeaders,
+        mode: 'cors',
+        cache: 'default',
+        body: JSON.stringify({
+            "to": "yannisamzal@gmail.com",
+            "subject": "Your end is near",
+            "html": "Stuff",
+            "company": "Popdot Consulting",
+            "sendername": "Your worst ennemy"
+        })
+      })
+      .then(
+        (error) => {
+          console.log(error)
+        }
+    )
+
+
+
+
   }
-  
-  export default Formulaire;
+
+  render() {
+    return (
+      <div class="h-screen bg-[#cfcfcf] pt-12">
+
+        <form role="form" id="email_outbound-form" onSubmit={this.handleSubmit}>
+
+          <div class="form-group">
+            <label>Objet : </label><input class="form-control" name="subject" data-type="text" type="text" required />
+          </div>
+
+          <div class="form-group">
+            <label>Message :</label>
+            <textarea wrap="hard" class="form-control" name="body" data-type="richtext" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>E-mail : </label><input class="form-control" name="to" data-type="email" type="email" required />
+          </div>
+
+          <div id="fg-errors" class="form-group">
+          </div>
+          <button class="btn btn-primary btn-lg" id="btn-submit" type="submit" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Submitting...">Submit</button>
+        </form>
+
+      </div>
+    );
+  }
+
+
+}
+
+export default Formulaire;
