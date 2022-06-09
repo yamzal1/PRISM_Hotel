@@ -10,8 +10,6 @@ export default function ChambreList({ rooms }) {
       )
   }
 
-
-
   return (
     <section className="roomslist">
       <div className="roomslist-center">
