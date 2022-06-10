@@ -88,14 +88,6 @@ export default class ChambreSeule extends Component {
             <Calendar />
           </div>
         </div>
-
-
-        <div className="centrer">
-          <Link to="/checkout" className="btn-primary">
-            Reserver la chambre
-          </Link>
-        </div>
-
       </>
     );
   }

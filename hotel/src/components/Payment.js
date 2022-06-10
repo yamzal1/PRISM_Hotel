@@ -1,8 +1,14 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
-
-const MyCards = () => {
+const MyCards = (props) => {
+	
+	const location = useLocation()
+	const date = location.state.date.value.toString()
+	const dateM = date.split(',')
+	const dateDeb = dateM[0].split('2022')
+	const dateFin = dateM[0].split('GMT')
 	const [data, setData] = useState({
 		cvc: "",
 		expiry: "",
@@ -17,7 +23,9 @@ const MyCards = () => {
 	};
 
 	return (
+		
 		<div id="PaymentForm">
+			<br></br>
 			<Cards
 				cvc={data.cvc}
 				expiry={data.expiry}
@@ -27,16 +35,18 @@ const MyCards = () => {
 			/>
 			<form action="">
                 <input
-					type="number"
+					maxLength={16}
+					type="text"
 					name="number"
 					placeholder="Card Number"
-					onChange={handleInputChange}
+					onChange={handleInputChange}					
 				/>
 				<input
-					type="number"
+					maxLength={3}
+					type="text"
 					name="cvc"
 					placeholder="CVC"
-					onChange={handleInputChange}
+					onChange={handleInputChange}					
 				/>
 				<input
 					type="month"   

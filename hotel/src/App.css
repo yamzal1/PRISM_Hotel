@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -95,6 +96,11 @@ input {
   text-align: center;
   padding-bottom: 1%;
 }
+
+.centrer button{
+  margin-top: 5%;
+}
+
 /* ----------------------- */
 /* css calendar */
 .calendar{
