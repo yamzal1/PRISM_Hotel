@@ -18,6 +18,7 @@ const MyCards = () => {
 
 	return (
 		<div id="PaymentForm">
+			<br></br>
 			<Cards
 				cvc={data.cvc}
 				expiry={data.expiry}
