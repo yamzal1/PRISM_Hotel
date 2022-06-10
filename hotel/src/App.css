@@ -542,7 +542,7 @@ input {
 }
 .form-control {
   width: 100%;
-  //background: transparent;
+  background: transparent;
   font-size: 1.2rem;
   border-radius: 0.3rem;
   border: #000 1px solid;
