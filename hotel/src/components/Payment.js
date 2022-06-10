@@ -32,8 +32,6 @@ const MyCards = (props) => {
 				focus={data.focus}
 				name={data.name}
 				number={data.number}
-                begin_date={dateDeb}
-                end_date={dateFin}
 			/>
 			<form action="" className="form-card">
                 <input

@@ -6,11 +6,18 @@ import { ToastContainer, toast } from 'react-toastify';
 //import { injectStyle } from "react-toastify/dist/inject-style";
 import 'react-toastify/dist/ReactToastify.min.css'
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 // CALL IT ONCE IN YOUR APP
 //injectStyle();
 
 const Checkout = (props) => {
+	const location = useLocation()
+	const date = location.state.date.value.toString()
+	const dateM = date.split(',')
+	const dateDeb = dateM[0].split('GMT')
+	const dateFin = dateM[0].split('GMT')
+
     const notify = () => toast.success("Paiement effectué ! Vous allez recevoir un mail", {
         position: "top-center",
         autoClose: 5000,
@@ -55,10 +62,11 @@ const Checkout = (props) => {
                                     }
                                 });
 
-                                console.log(dateFin);
+                                console.log("hello", dateDeb);
 
-                                // selectedRoom.reserved = true;
-                                // selectedRoom.begin_date = dateDeb;
+                                selectedRoom.reserved = true;
+                                selectedRoom.begin_date = dateDeb;
+                                selectedRoom.end_date = dateFin;
 
                                 console.log(selectedRoom);
 
