@@ -5,6 +5,7 @@ import Banniere from "../components/Banniere";
 import { ToastContainer, toast } from 'react-toastify';
 //import { injectStyle } from "react-toastify/dist/inject-style";
 import 'react-toastify/dist/ReactToastify.min.css'
+import { Link } from "react-router-dom";
 
 // CALL IT ONCE IN YOUR APP
 //injectStyle();
@@ -22,7 +23,6 @@ const Checkout = (props) => {
             document.location.href = "/"
         }, 5000)
     });
-
 
     return (
         <>
@@ -55,8 +55,10 @@ const Checkout = (props) => {
                                     }
                                 });
 
-                                selectedRoom.reserved = true;
-                                selectedRoom.begin_date = '12-05-2022';
+                                console.log(dateFin);
+
+                                // selectedRoom.reserved = true;
+                                // selectedRoom.begin_date = dateDeb;
 
                                 console.log(selectedRoom);
 
