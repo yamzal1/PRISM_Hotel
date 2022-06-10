@@ -7,22 +7,22 @@ export default class Services extends Component {
       {
         icon: <FaCocktail />,
         title: "Cocktails gratuits",
-        info: "coucou",
+        info: "A votre arrivée, cocktails gratuits rien que pour vous !",
       },
       {
         icon: <FaHiking />,
-        title: "Cocktails gratuits",
-        info: "coucou",
+        title: "Randonnées",
+        info: "Organisation de randonnées",
       },
       {
         icon: <FaShuttleVan />,
-        title: "Cocktails gratuits",
-        info: "coucou",
+        title: "Transport",
+        info: "Service hôtelier pour vous accueillir",
       },
       {
         icon: <FaBeer />,
-        title: "Cocktails gratuits",
-        info: "coucou",
+        title: "Services chambres",
+        info: "Disponibilités 24/24h pour vous apporter ce que vous désirez !",
       },
     ],
   };

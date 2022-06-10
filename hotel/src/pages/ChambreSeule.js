@@ -60,24 +60,22 @@ export default class ChambreSeule extends Component {
           </div>
           <div className="single-room-info">
             <article className="desc">
-              <h3>details</h3>
+              <h3>Détails</h3>
               <p>{description}</p>
             </article>
             <article className="info">
-              <h3>info</h3>
-              <h6>price : ${price}</h6>
-              <h6>size : {size} m2</h6>
-              <h6>
-                max capacity :{" "}
-                {capacity > 1 ? `${capacity} people` : `${capacity} person`}
-              </h6>
-              <h6>{pets ? "pets allowed" : "no pets allowed"}</h6>
-              <h6>{breakfast && "free breakfast included"}</h6>
+              <h3>Informations</h3>
+              <h6><strong>Prix :</strong> {price}€ <br/>
+                  <strong>Taille :</strong> {size} m2<br/>
+                <strong>Capacité maximum :</strong>{" "}
+                {capacity > 1 ? `${capacity} personnes` : `${capacity} personnes`}<br/>
+                <strong>{pets ? "Animal autorisé " : "Aucun animal autorisé"}</strong><br/>
+                <strong>{breakfast && "Petit déjeuner inclus"}</strong></h6>
             </article>
           </div>
         </section>
         <section className="room-extras">
-          <h6>extras</h6>
+          <h3>Les avantages</h3>
           <ul className="extras">
             {extras.map((item, index) => {
               return <li key={index}>- {item}</li>

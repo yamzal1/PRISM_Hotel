@@ -4,12 +4,12 @@
   box-sizing: border-box;
 }
 :root {
-  --primaryColor: #af9a7d;
+  --primaryColor: #dcbb92;
   --mainWhite: #fff;
   --offWhite: #f7f7f7;
   --mainBlack: #222;
   --mainGrey: #ececec;
-  --darkGrey: #cfcfcf;
+  --darkGrey: #f4f3f2;
   --mainTransition: all 0.3s linear;
   --mainSpacing: 3px;
   --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
@@ -81,6 +81,7 @@ input {
   background: var(--primaryColor);
   padding: 0.4rem 0.9rem;
   border: 3px solid var(--primaryColor);
+  border-radius: 0.3rem;
   transition: var(--mainTransition);
   text-transform: uppercase;
   cursor: pointer;
@@ -141,10 +142,12 @@ input {
   background: var(--offWhite);
   z-index: 1;
 }
+
 .nav-header {
   display: flex;
   justify-content: space-between;
 }
+
 .nav-btn {
   background: transparent;
   border: none;
@@ -160,6 +163,7 @@ input {
   overflow: hidden;
   transition: var(--mainTransition);
   list-style-type: none;
+  margin-top: 10px;
 }
 .nav-links a {
   display: block;
@@ -203,7 +207,7 @@ input {
 .defaultHero,
 .roomsHero {
   min-height: calc(100vh - 66px);
-  background: url("./images/defaultBcg.jpeg") center/cover no-repeat;
+  background: url("./images/imagefond.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,6 +226,7 @@ input {
   text-align: center;
   text-transform: capitalize;
   letter-spacing: var(--mainSpacing);
+  border-radius: 1rem;
 }
 .banner h1 {
   font-size: 2.5rem;
@@ -290,7 +295,7 @@ input {
 }
 .service span {
   display: inline-block;
-  color: var(--primaryColor);
+  color: #000;
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
 }
@@ -430,6 +435,8 @@ input {
 .info {
   margin: 1rem 0;
 }
+
+
 .desc h3 {
   text-transform: capitalize;
   letter-spacing: var(--mainSpacing);
@@ -508,6 +515,10 @@ input {
   padding: 5rem 0;
 }
 .filter-form {
+  background-color : var(--mainGrey);
+  border-radius: 1rem;
+  padding: 15px;
+  font-weight: bold;
   width: 60vw;
   margin: 0 auto;
   display: grid;
@@ -525,24 +536,48 @@ input {
 }
 .form-control {
   width: 100%;
-  background: transparent;
-  font-size: 1rem;
+  //background: transparent;
+  font-size: 1.2rem;
+  border-radius: 0.3rem;
+  border: #000 1px solid;
+  border-radius: 3px;
+	font-size: 1.2em;
+  padding: 6px 12px;
 }
+
+.option {
+  width: 100%;
+  font-size: 1.2rem;
+  border: #000 1px solid;
+	font-size: 1.2em;
+  padding: 6px 12px;
+}
+
 .size-inputs {
   display: flex;
 }
 .size-input {
-  width: 40%;
   padding: 0.2rem;
   border: 1px solid var(--mainBlack);
   border-radius: 0.3rem;
   margin-right: 0.3rem;
+  width: 100%;
+  font-size: 1.2rem;
+  border-radius: 0.3rem;
+  border: #000 1px solid;
+  border-radius: 3px;
+	font-size: 1.2em;
+  padding: 6px 12px;
 }
-.single-extra label {
+.single-extra {
   display: inline-block;
-  font-size: 0.8rem;
-  margin-left: 0.5rem;
+  width: 100px;
+  text-align: right;
+  margin: 8px;
 }
+
+
+
 @media screen and (min-width: 776px) {
   .filter-form {
     width: 70vw;
@@ -555,3 +590,5 @@ input {
   }
 }
 /* end of rooms fitler*/
+
+

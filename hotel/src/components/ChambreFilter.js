@@ -26,24 +26,24 @@ export default function ChambreFilter({rooms}) {
   types = ["all", ...types];
   // map to jsx
   types = types.map((item, index) => (
-    <option key={index} value={item}>
+    <option className="option" key={index} value={item}>
       {item}
     </option>
   ));
   // get unique capacity
   let people = getUnique(rooms, "capacity");
   people = people.map((item, index) => (
-    <option key={index} value={item}>
+    <option className="option" key={index} value={item}>
       {item}
     </option>
   ));
   return (
     <section className="filter-container">
-      <Title title="search rooms" />
+      <Title title="Rechercher une chambre" />
       <form className="filter-form">
         {/* select type */}
         <div className="form-group">
-          <label htmlFor="type">room type</label>
+          <label htmlFor="type">Type de chambres</label>
           <select
             name="type"
             id="type"
@@ -57,7 +57,7 @@ export default function ChambreFilter({rooms}) {
         {/* end of select type */}
         {/* guests  */}
         <div className="form-group">
-          <label htmlFor="capacity">Guests</label>
+          <label htmlFor="capacity">Personnes</label>
           <select
             name="capacity"
             id="capacity"
@@ -71,7 +71,7 @@ export default function ChambreFilter({rooms}) {
         {/* end of guests */}
         {/* room price */}
         <div className="form-group">
-          <label htmlFor="price">room price ${price}</label>
+          <label htmlFor="price">Prix max {price}€</label>
           <input
             type="range"
             name="price"
@@ -86,7 +86,7 @@ export default function ChambreFilter({rooms}) {
         {/* end of room price*/}
         {/* size */}
         <div className="form-group">
-          <label htmlFor="price">room size </label>
+          <label htmlFor="price">Taille de la chambre </label>
           <div className="size-inputs">
             <input
               type="number"
@@ -108,23 +108,23 @@ export default function ChambreFilter({rooms}) {
         {/* extras */}
         <div className="form-group">
           <div className="single-extra">
+          <label htmlFor="breakfast">Petit déjeuner</label>
             <input
               type="checkbox"
               name="breakfast"
               id="breakfast"
               checked={breakfast}
               onChange={handleChange}
-            />
-            <label htmlFor="breakfast">breakfast</label>
+            />            
           </div>
           <div className="single-extra">
+            <label htmlFor="pets">Animaux</label>
             <input
               type="checkbox"
               name="pets"
               checked={pets}
               onChange={handleChange}
-            />
-            <label htmlFor="breakfast">pets</label>
+            />  
           </div>
         </div>
         {/* end of extras type */}
