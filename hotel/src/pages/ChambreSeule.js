@@ -17,6 +17,7 @@ export default class ChambreSeule extends Component {
     console.log(this.props);
   }
   static contextType = RoomContext;
+
   render() {
     const { getRoom } = this.context;
     const room = getRoom(this.state.slug);
@@ -84,7 +85,7 @@ export default class ChambreSeule extends Component {
         </section>
         <div className="groupe">
           <div className="calendar">
-            <p>Selectionner les dates du séjour</p>
+            <p>Selectionner vos dates de séjour :</p>
             <Calendar />
           </div>
         </div>

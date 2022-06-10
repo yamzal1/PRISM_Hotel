@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { RoomConsumer } from '../context';
 
 export default function Chambre({room}) {
-  const{ name, slug, images, price } = room;
+  const{ name, slug, images, price, reserved } = room;
 
   return (
     <article className='room'>
@@ -31,5 +31,6 @@ Chambre.propTypes = {
         slug:PropTypes.string.isRequired,
         images:PropTypes.arrayOf(PropTypes.string).isRequired,
         price:PropTypes.number.isRequired,
+        reserved:PropTypes.bool.isRequired
     })
 }

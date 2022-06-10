@@ -33,25 +33,25 @@ const MyCards = (props) => {
 				name={data.name}
 				number={data.number}
 			/>
-			<form action="">
+			<form action="" className="form-card">
                 <input
 					maxLength={16}
 					type="text"
 					name="number"
-					placeholder="Card Number"
+					placeholder="Numéro de carte"
 					onChange={handleInputChange}					
 				/>
 				<input
 					maxLength={3}
 					type="text"
 					name="cvc"
-					placeholder="CVC"
+					placeholder="Cryptogramme"
 					onChange={handleInputChange}					
 				/>
 				<input
 					type="month"   
 					name="expiry"
-					placeholder="Expire Date MM/YY"
+					placeholder="Date d'expiration MM/YY"
 					onChange={handleInputChange}
                     maxLength="5"
                     minLength="5"
@@ -59,20 +59,20 @@ const MyCards = (props) => {
 				<input
 					type="text"
 					name="name"
-					placeholder="Your Name"
+					placeholder="Nom"
 					onChange={handleInputChange}
 				/>
 				<input
 					type="email"
 					name="email"
-					placeholder="Your Email"
+					placeholder="Email"
 					pattern=".+@gmail.com"
 					onChange={handleInputChange}
 				/>
 				<input
 					type="text"
 					name="address"
-					placeholder="Your Address"
+					placeholder="Adresse"
 					onChange={handleInputChange}
 				/>				
 			</form>
