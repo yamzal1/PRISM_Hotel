@@ -36,14 +36,14 @@ const MyCards = (props) => {
 			<form action="">
                 <input
 					maxLength={16}
-					type="number"
+					type="text"
 					name="number"
 					placeholder="Card Number"
 					onChange={handleInputChange}					
 				/>
 				<input
 					maxLength={3}
-					type="number"
+					type="text"
 					name="cvc"
 					placeholder="CVC"
 					onChange={handleInputChange}					
