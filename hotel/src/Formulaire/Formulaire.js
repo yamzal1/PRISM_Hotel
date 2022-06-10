@@ -3,53 +3,98 @@ import axios from 'axios';
 import '../App.css'
 
 class Formulaire extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
+  
+      state = {
         nom: '',
         email: '',
         objet: '',
         message: ''
-      }
-    }
-  
-    handleSubmit(e){
+      };
+    
+      handleSubmit = (e) => {
         e.preventDefault();
-        axios({
-          method: "POST",
-          url:"http://localhost:3000/send",
-          data:  this.state
-        }).then((response)=>{
-          if (response.data.status === 'success') {
-            alert("Message Sent.");
-            this.resetForm()
-          } else if (response.data.status === 'fail') {
-            alert("Message failed to send.")
-          }
+        console.log("submitted");
+    
+        var mailHeaders = new Headers();
+              mailHeaders.append("cache-control", "no-cache");
+              mailHeaders.append("content-type", "application/json");
+              mailHeaders.append("x-apikey", "62a1b0851a51777906aff8ad");
+    
+        const { nom } = this.state;
+        const { email } = this.state;
+        const { objet } = this.state;
+        const { message } = this.state;
+    
+    
+        fetch("https://dbhotel-bb79.restdb.io/mail", {
+          method: 'POST',
+          headers: mailHeaders,
+          mode: 'cors',
+          cache: 'default',
+          body: JSON.stringify({
+              "to": "reactjshotel@yopmail.com",
+              "subject": JSON.stringify(objet),
+              "html": JSON.stringify(message),
+              "company": JSON.stringify(nom),
+              "sendername": JSON.stringify(email)
+          })
         })
-      }
+        .then(
+          (error) => {
+            console.log(error)
+          }
+      )
+    
+      };
+
+
       resetForm(){
         this.setState({nom: '', email: '', objet: '', message: ''})
       }
       
     render() {
+      const { nom } = this.state;
+      const { email } = this.state;
+      const { objet } = this.state;
+      const { message } = this.state;
+
+
       return(
         <div class="h-screen bg-[#cfcfcf] pt-12">
         <div class="flex">
             <div class="w-1/2 ml-20 mt-8 mr-8"> 
             <p class="text-center font-bold text-[28px] pb-6">Contactez nous</p>
-          <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
+          <form id="contact-form" onSubmit={this.handleSubmit} method="POST">
+            
             <div class="mb-3 pt-0">
-              <input type="text" class=" m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" value={this.state.name} onChange={this.onNameChange.bind(this)} placeholder="Nom"/>
+              <input type="text" class=" m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" 
+              value={nom}
+              name="nom"
+              onChange={e => this.setState({
+              sender: e.target.value
+            })} placeholder="Nom"/>
             </div>
+            
             <div class="mb-3 pt-0">
-              <input type="email" class="m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" aria-describedby="emailHelp" value={this.state.email} onChange={this.onEmailChange.bind(this)} placeholder="Email" />
+              <input type="email" class="m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" 
+              aria-describedby="emailHelp" value={this.state.email}             onChange={e => this.setState({
+              sender: e.target.value
+            })} placeholder="Email" />
             </div>
+            
             <div class="mb-3 pt-0">
-              <input type="text" class=" m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" value={this.state.objet} onChange={this.onObjetChange.bind(this)} placeholder="Objet"/>
+              <input type="text" class=" m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" 
+              value={this.state.objet}             onChange={e => this.setState({
+                sender: e.target.value
+              })} placeholder="Objet"/>
             </div>
+            
             <div class="mb-3 pt-0">
-              <textarea class="m-2 form-flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" rows="5" value={this.state.message} onChange={this.onMessageChange.bind(this)} placeholder="Message" />
+              <textarea class="m-2 form-flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" 
+              rows="5" value={this.state.message}   onChange={e => this.setState({
+              subject: e.target.value
+            })} placeholder="Message" />
+
             </div >
             <div class="mb-3 pt-0">
             <button type="submit" class="ml-48 justify-center py-2 px-4 bg-[#af9a7d] text-white w-1/2 duration-200 text-center font-semibold rounded-lg ">Envoyer</button>
@@ -74,24 +119,24 @@ class Formulaire extends React.Component {
       );
     }
   
-    onNameChange(event) {
-      this.setState({nom: event.target.value})
-    }
+    // onNameChange(event) {
+    //   this.setState({nom: event.target.value})
+    // }
   
-    onEmailChange(event) {
-      this.setState({email: event.target.value})
-    }
+    // onEmailChange(event) {
+    //   this.setState({email: event.target.value})
+    // }
 
-    onObjetChange(event) {
-        this.setState({objet: event.target.value})
-    }
+    // onObjetChange(event) {
+    //     this.setState({objet: event.target.value})
+    // }
   
-    onMessageChange(event) {
-      this.setState({message: event.target.value})
-    }
+    // onMessageChange(event) {
+    //   this.setState({message: event.target.value})
+    // }
   
-    handleSubmit(event) {
-    }
+    // handleSubmit(event) {
+    // }
   }
   
   export default Formulaire;
