@@ -17,6 +17,7 @@ export default class ChambreSeule extends Component {
     console.log(this.props);
   }
   static contextType = RoomContext;
+
   render() {
     const { getRoom } = this.context;
     const room = getRoom(this.state.slug);
