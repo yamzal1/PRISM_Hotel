@@ -84,7 +84,7 @@ export default class ChambreSeule extends Component {
         </section>
         <div className="groupe">
           <div className="calendar">
-            <p>Selectionner les dates du séjour</p>
+            <p>Selectionner vos dates de séjour :</p>
             <Calendar />
           </div>
         </div>

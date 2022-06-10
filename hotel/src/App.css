@@ -112,6 +112,10 @@ input {
 .calendar input{
   width: 15%;
 }
+
+.calendar p{
+  margin-bottom:10px;
+}
 /* ---------------------- */
 
 .groupe{
@@ -542,7 +546,6 @@ input {
 }
 .form-control {
   width: 100%;
-  //background: transparent;
   font-size: 1.2rem;
   border-radius: 0.3rem;
   border: #000 1px solid;
@@ -597,4 +600,23 @@ input {
 }
 /* end of rooms fitler*/
 
+.form-card input {
+  border-radius: 0.3rem;
+  background-color: var(--mainGrey);
+  width:50%;
+  margin-right: 10px;
+}
 
+.btn-payer {
+  margin-bottom: 20px;
+  width: 10%;
+  padding: 10px 0;
+}
+
+.form-date {
+  margin-right: 10px;
+}
+
+.form-res {
+  margin: 20px 0;
+}
