@@ -60,14 +60,14 @@ class Formulaire extends React.Component {
 
 
       return(
-        <div class="h-screen bg-[#cfcfcf] pt-12">
+        <div class="h-screen bg-[#ececec] pt-12">
         <div class="flex">
             <div class="w-1/2 ml-20 mt-8 mr-8"> 
             <p class="text-center font-bold text-[28px] pb-6">Contactez nous</p>
           <form id="contact-form" onSubmit={this.handleSubmit} method="POST">
             
             <div class="mb-3 pt-0">
-              <input type="text" class=" m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" 
+              <input type="text" class=" m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#dcbb92] w-full py-2 px-4 bg-white text-[#dcbb92] placeholder-[#dcbb92] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#dcbb92] focus:border-transparent" 
               value={nom}
               name="nom"
               onChange={e => this.setState({
@@ -76,32 +76,32 @@ class Formulaire extends React.Component {
             </div>
             
             <div class="mb-3 pt-0">
-              <input type="email" class="m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" 
+              <input type="email" class="m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#dcbb92] w-full py-2 px-4 bg-white text-[#dcbb92] placeholder-[#dcbb92] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#dcbb92] focus:border-transparent" 
               aria-describedby="emailHelp" value={this.state.email}             onChange={e => this.setState({
               sender: e.target.value
             })} placeholder="Email" />
             </div>
             
             <div class="mb-3 pt-0">
-              <input type="text" class=" m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" 
+              <input type="text" class=" m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#dcbb92] w-full py-2 px-4 bg-white text-[#dcbb92] placeholder-[#dcbb92] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#dcbb92] focus:border-transparent" 
               value={this.state.objet}             onChange={e => this.setState({
                 sender: e.target.value
               })} placeholder="Objet"/>
             </div>
             
             <div class="mb-3 pt-0">
-              <textarea class="m-2 form-flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" 
+              <textarea class="m-2 form-flex-1 appearance-none border border-[#dcbb92] w-full py-2 px-4 bg-white text-[#dcbb92] placeholder-[#dcbb92] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#dcbb92] focus:border-transparent" 
               rows="5" value={this.state.message}   onChange={e => this.setState({
               subject: e.target.value
             })} placeholder="Message" />
 
             </div >
             <div class="mb-3 pt-0">
-            <button type="submit" class="ml-48 justify-center py-2 px-4 bg-[#af9a7d] text-white w-1/2 duration-200 text-center font-semibold rounded-lg ">Envoyer</button>
+            <button type="submit" class="ml-48 justify-center py-2 px-4 bg-[#dcbb92] text-white w-1/2 duration-200 text-center font-semibold rounded-lg ">Envoyer</button>
             </div>
           </form>
           </div>
-          <div class="rounded-xl bg-[#FAF3EF] w-1/3 p-6">         
+          <div class="rounded-xl bg-[#fff] w-1/3 p-6">         
                 <div>
                     <p class="font-bold text-center text-xl"> Notre adresse </p>
                     <p class="text-center"> 13 avenue des Sciences </p>
