@@ -10,6 +10,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import Navigation from "./components/Navigation";
 import Checkout from "./pages/Checkout";
+import ChambreAdmin from "./pages/ChambreAdmin";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route exact path="/chambres/" component={ Chambres } />
       <Route exact path="/chambres/:slug" component={ ChambreSeule } />
       <Route exact path="/checkout/" component={ Checkout } />
+      <Route exact path="/chambreadmin/" component={ ChambreAdmin } />
       <Route component={ Erreur } />
     </Switch>
     </>
