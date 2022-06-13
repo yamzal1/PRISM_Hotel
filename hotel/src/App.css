@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 * {
   margin: 0;
@@ -612,8 +609,6 @@ input {
 
 .btn-payer {
   margin-bottom: 20px;
-  width: 10%;
-  padding: 10px 0;
 }
 
 .form-date {
@@ -623,4 +618,3 @@ input {
 .form-res {
   margin: 20px 0;
 }
-
