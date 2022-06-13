@@ -18,6 +18,40 @@ export default class RoomProvider extends Component {
     pets: false
   };
 
+  generateMoney = async () => {
+    var headers = new Headers();
+    headers.append("cache-control", "no-cache");
+    headers.append("x-apikey", "62348bc0dced170e8c83a37c");
+
+    var sum = 0
+
+    fetch("https://pommedeterre-20df.restdb.io/rest/chambre", {
+        method: 'GET',
+        headers: headers,
+        mode: 'cors',
+        cache: 'default'
+      })
+      .then(res => res.json())
+      .then(
+        (result) => {
+            result.map(item => {
+                var begin_date = Date.parse(item.begin_date);
+                var end_date = Date.parse(item.end_date);
+                var price = item.price;
+
+                const diffTime = Math.abs(end_date - begin_date);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+                console.log(diffDays + " days");
+
+                console.log(diffDays * price);
+            });
+        },
+        (error) => {
+          console.log(error)
+        }
+    )
+  }
+
   getAllRooms = async () => {
     var headers = new Headers();
     headers.append("cache-control", "no-cache");
@@ -32,92 +66,20 @@ export default class RoomProvider extends Component {
       .then(res => res.json())
       .then(
         (result) => {
-          let rooms = this.formatRestDBData(result);
-          let featuredRooms = rooms.filter(room => room.featured === true);
-          let maxPrice = Math.max(...rooms.map(item => item.price));
-          let maxSize = Math.max(...rooms.map(item => item.size));
-          this.setState({
-            rooms,
-            featuredRooms,
-            sortedRooms: rooms,
-            loading: false,
-            price: maxPrice,
-            maxPrice,
-            maxSize
-          });
+            let rooms = this.formatRestDBData(result);
+            let featuredRooms = rooms.filter(room => room.featured === true);
+            let maxPrice = Math.max(...rooms.map(item => item.price));
+            let maxSize = Math.max(...rooms.map(item => item.size));
+            this.setState({
+                rooms,
+                featuredRooms,
+                sortedRooms: rooms,
+                loading: false,
+                price: maxPrice,
+                maxPrice,
+                maxSize
+            });
         },
-        (error) => {
-          console.log(error)
-        }
-    )
-  }
-
-  createNewRoom = async () => {
-    var headers = new Headers();
-    headers.append("cache-control", "no-cache");
-    headers.append("content-type", "application/json")
-    headers.append("x-apikey", "62348bc0dced170e8c83a37c");
-
-    var newChambre = {
-      "description": "Street art edison bulb gluten-free, tofu try-hard lumbersexual brooklyn tattooed pickled chambray. Actually humblebrag next level, deep v art party wolf tofu direct trade readymade sustainable hell of banjo. Organic authentic subway tile cliche palo santo, street art XOXO dreamcatcher retro sriracha portland air plant kitsch stumptown. Austin small batch squid gastropub. Pabst pug tumblr gochujang offal retro cloud bread bushwick semiotics before they sold out sartorial literally mlkshk. Vaporware hashtag vice, sartorial before they sold out pok pok health goth trust fund cray.",
-      "name": "single basic",
-      "slug": "single_basic",
-      "type": "single",
-      "price": 100,
-      "size": 200,
-      "capacity": 1,
-      "pets": false,
-      "breakfast": false,
-      "featured": false,
-      "extras": [
-        "Plush pillows and breathable bed linens",
-        "Soft, oversized bath towels",
-        "Full-sized, pH-balanced toiletries",
-        "Complimentary refreshments",
-        "Adequate safety/security",
-        "Internet",
-        "Comfortable beds"
-      ],
-      "images": [
-        {
-          "fields": {
-            "file": {
-              "url": "https://picsum.photos/300/200"
-            }
-          }
-        },
-        {
-          "fields": {
-            "file": {
-              "url": "https://picsum.photos/300/200"
-            }
-          }
-        },
-        {
-          "fields": {
-            "file": {
-              "url": "https://picsum.photos/300/200"
-            }
-          }
-        },
-        {
-          "fields": {
-            "file": {
-              "url": "https://picsum.photos/300/200"
-            }
-          }
-        }
-      ]
-    }
-
-    fetch("https://pommedeterre-20df.restdb.io/rest/chambre", {
-        method: 'POST',
-        headers: headers,
-        mode: 'cors',
-        cache: 'default',
-        body: JSON.stringify(newChambre)
-      })
-      .then(
         (error) => {
           console.log(error)
         }
@@ -125,8 +87,8 @@ export default class RoomProvider extends Component {
   }
 
   componentDidMount() {
-    this.getAllRooms();
-    // this.createNewRoom();
+    this.generateMoney();
+    // this.getAllRooms();
   }
 
   formatRestDBData(items) {
