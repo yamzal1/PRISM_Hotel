@@ -38,13 +38,16 @@ class Formulaire extends React.Component {
               "sendername": JSON.stringify(email)
           })
         })
+        
         .then(
           (error) => {
             console.log(error)
           }
       )
+ 
+      this.resetForm();
     
-      };
+    };
 
 
       resetForm(){
@@ -87,7 +90,8 @@ class Formulaire extends React.Component {
                         data-type="email"   
                         type="email"  
                         placeholder="E-mail"       
-                        name="sender"
+                        name="email"
+                        value={email}
                         class="m-2 form-flex-1 appearance-none border border-[#dcbb92] w-full py-2 px-4 bg-white text-[#dcbb92] placeholder-[#dcbb92] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#dcbb92] focus:border-transparent" 
                                                 onChange={e => this.setState({
                           email: e.target.value
@@ -101,7 +105,8 @@ class Formulaire extends React.Component {
                         data-type="objet"   
                         type="objet"
                         placeholder="Objet"         
-                        name="sender"
+                        name="objet"
+                        value={objet}
                         class="m-2 form-flex-1 appearance-none border border-[#dcbb92] w-full py-2 px-4 bg-white text-[#dcbb92] placeholder-[#dcbb92] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#dcbb92] focus:border-transparent" 
                                                 onChange={e => this.setState({
                           objet: e.target.value
@@ -113,8 +118,9 @@ class Formulaire extends React.Component {
             <textarea class="m-2 form-flex-1 appearance-none border border-[#dcbb92] w-full py-2 px-4 bg-white text-[#dcbb92] placeholder-[#dcbb92] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#dcbb92] focus:border-transparent" 
               rows="5"
               name="message"
+              value={message}
               onChange={e => this.setState({
-              subject: e.target.value
+              message: e.target.value
             })}
             placeholder="Message" />
 
