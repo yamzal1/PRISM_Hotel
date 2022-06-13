@@ -4,6 +4,7 @@ import Banniere from "../components/Banniere";
 import { Link } from "react-router-dom";
 import Services from "../components/Services";
 import RecoChambre from "../components/RecoChambre";
+import Formulaire from "../components/Formulaire";
 const Page_Accueil = () => {
   return (
     <>
@@ -19,6 +20,7 @@ const Page_Accueil = () => {
       </Hero>
       <Services />
       <RecoChambre />
+      <Formulaire/>
     </>
   );
 };
