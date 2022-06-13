@@ -59,7 +59,7 @@ class Formulaire extends React.Component {
 
 
       return(
-        <div class="h-screen bg-[#cfcfcf] pt-12">
+        <div class="h-screen bg-[#ececec] pt-12">
         <div class="flex">
             <div class="w-1/2 ml-20 mt-8 mr-8"> 
             <p class="text-center font-bold text-[28px] pb-6">Contactez nous</p>
@@ -120,11 +120,11 @@ class Formulaire extends React.Component {
 
             </div >
             <div class="mb-3 pt-0">
-            <button type="submit" class="ml-48 justify-center py-2 px-4 bg-[#af9a7d] text-white w-1/2 duration-200 text-center font-semibold rounded-lg ">Envoyer</button>
+            <button type="submit" class="ml-48 justify-center py-2 px-4 bg-[#dcbb92] text-white w-1/2 duration-200 text-center font-semibold rounded-lg ">Envoyer</button>
             </div>
           </form>
           </div>
-          <div class="rounded-xl bg-[#FAF3EF] w-1/3 p-6">         
+          <div class="rounded-xl bg-[#fff] w-1/3 p-6">         
                 <div>
                     <p class="font-bold text-center text-xl"> Notre adresse </p>
                     <p class="text-center"> 13 avenue des Sciences </p>
