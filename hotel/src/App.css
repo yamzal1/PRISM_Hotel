@@ -630,3 +630,16 @@ input {
 .form-res {
   margin: 20px 0;
 }
+
+.centrer2{
+  display: block;
+  margin-top: 10%;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-color: #000;
+  border-style: solid;
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+}

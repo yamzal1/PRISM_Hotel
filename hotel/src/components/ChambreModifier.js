@@ -5,9 +5,12 @@ import defaultImg from '../images/room-1.jpeg'
 import PropTypes from 'prop-types'
 import { RoomConsumer } from '../context';
 import { FaPen, FaRegTrashAlt } from 'react-icons/fa';
+import { useHistory } from "react-router-dom";
 
 export default function Chambre({ room }) {
     const { id, name, slug, images, price, reserved } = room;
+
+    const History = useHistory();
 
     const suppr = id => {
         var headers = new Headers();
@@ -23,6 +26,7 @@ export default function Chambre({ room }) {
         }).then(
             (error) => {
                 console.log(error)
+                window.location.reload()
             }
         )
     };

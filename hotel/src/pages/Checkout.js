@@ -34,9 +34,9 @@ const Checkout = (props) => {
                 </Banniere>
             </Hero>
             <div className="centrer">
-                <button onClick={reserveRoom} className="btn-primary">
+                {/* <button onClick={reserveRoom} className="btn-primary">
                     Reserver la chambre
-                </button>
+                </button> */}
                 <MyCards />
                 <button onClick={notify} className="btn-primary btn-payer">
                     Payer

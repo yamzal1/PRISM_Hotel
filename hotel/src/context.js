@@ -88,7 +88,7 @@ export default class RoomProvider extends Component {
 
   componentDidMount() {
     this.generateMoney();
-    // this.getAllRooms();
+    this.getAllRooms();
   }
 
   formatRestDBData(items) {
