@@ -83,7 +83,7 @@ class Formulaire extends React.Component {
         <div class="h-screen bg-[#ececec] pt-12">
         <div class="flex">
             <div class="w-1/2 ml-20 mt-8 mr-8"> 
-            <p class="text-center font-bold text-[28px] pb-6">Contactez nous</p>
+            <p class="text-center text-[28px] pb-6 font-bold">Contactez nous</p>
           <form id="contact-form" onSubmit={this.handleSubmit} method="POST">
             
             <div class="mb-3 pt-0">
@@ -154,12 +154,12 @@ class Formulaire extends React.Component {
           <div class="rounded-xl bg-[#fff] w-1/3 p-6">         
                 <div>
                     <p class="font-bold text-center text-xl"> Notre adresse </p>
-                    <p class="text-center"> 13 avenue des Sciences </p>
-                    <p class="text-center"> 91190 Gif-Sur-Yvette</p>
+                    <p class="text-center"> Route de Ceinture</p>
+                    <p class="text-center"> Bora Bora</p>
                     <p class="font-bold text-center text-xl mt-4">Appelez nous </p>
                     <p class="text-center mb-8"> +33 1 01 01 01 01</p>
                     <div class="flex justify-center ">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2632.7113352753418!2d2.1686606514238176!3d48.710998118925346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67f538f1df01d%3A0xe5d2ea29a4e0ceb!2sIUT%20d&#39;Orsay!5e0!3m2!1sfr!2sfr!4v1652610451161!5m2!1sfr!2sfr" width="400" height="300" class="w-full b-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>  
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45692.45748298493!2d-151.7461533791801!3d-16.490604133537055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x76bda2ce24449a97%3A0x1fdfb5a65311c3b8!2sHotel%20Royal%20Bora%20Bora!5e0!3m2!1sfr!2sfr!4v1655149554121!5m2!1sfr!2sfr" width="400" height="300" class="w-full b-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
