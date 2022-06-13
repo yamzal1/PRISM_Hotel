@@ -35,22 +35,15 @@ export default class RoomProvider extends Component {
       .then(
         (result) => {
             result.map(item => {
-                if (item.slug == "yannis") {
-                    console.log(Date(item.begin_date));
-                    
-                    var begin_date = Date(item.begin_date);
-                    var end_date = Date(item.end_date);
-                    var price = item.price;
+                var begin_date = Date.parse(item.begin_date);
+                var end_date = Date.parse(item.end_date);
+                var price = item.price;
 
-                    console.log("begin_date", begin_date);
-                    console.log("end_date", end_date);
-                    const diffTime = Math.abs(end_date - begin_date);
-                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-                    console.log(diffTime + " milliseconds");
-                    console.log(diffDays + " days");
+                const diffTime = Math.abs(end_date - begin_date);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+                console.log(diffDays + " days");
 
-                    console.log(Date(begin_date));
-                }
+                console.log(diffDays * price);
             });
         },
         (error) => {
