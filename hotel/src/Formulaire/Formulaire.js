@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import '../App.css'
 
 class Formulaire extends React.Component {
@@ -67,33 +66,57 @@ class Formulaire extends React.Component {
           <form id="contact-form" onSubmit={this.handleSubmit} method="POST">
             
             <div class="mb-3 pt-0">
-              <input type="text" class=" m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" 
-              value={nom}
-              name="nom"
+                <textarea
+                    required
+                    placeholder="Nom"
+                    type="text"
+                    class="m-2 form-flex-1 appearance-none border border-[#dcbb92] w-full py-2 px-4 bg-white text-[#dcbb92] placeholder-[#dcbb92] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#dcbb92] focus:border-transparent" 
+                                        name="nom"
+                    value={nom}
+                    onChange={e => this.setState({
+                      nom: e.target.value
+                    })}
+                  />
+            </div>   
+
+
+            <div class="mb-3 pt-0">
+                 <textarea
+            
+                        required
+                        data-type="email"   
+                        type="email"  
+                        placeholder="E-mail"       
+                        name="sender"
+                        class="m-2 form-flex-1 appearance-none border border-[#dcbb92] w-full py-2 px-4 bg-white text-[#dcbb92] placeholder-[#dcbb92] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#dcbb92] focus:border-transparent" 
+                                                onChange={e => this.setState({
+                          email: e.target.value
+                        })}
+                      />
+            </div>
+            
+            <div class="mb-3 pt-0">
+            <textarea
+                        required
+                        data-type="objet"   
+                        type="objet"
+                        placeholder="Objet"         
+                        name="sender"
+                        class="m-2 form-flex-1 appearance-none border border-[#dcbb92] w-full py-2 px-4 bg-white text-[#dcbb92] placeholder-[#dcbb92] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#dcbb92] focus:border-transparent" 
+                                                onChange={e => this.setState({
+                          objet: e.target.value
+                        })}
+                      />
+            </div>
+            
+            <div class="mb-3 pt-0">
+            <textarea class="m-2 form-flex-1 appearance-none border border-[#dcbb92] w-full py-2 px-4 bg-white text-[#dcbb92] placeholder-[#dcbb92] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#dcbb92] focus:border-transparent" 
+              rows="5"
+              name="message"
               onChange={e => this.setState({
-              sender: e.target.value
-            })} placeholder="Nom"/>
-            </div>
-            
-            <div class="mb-3 pt-0">
-              <input type="email" class="m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" 
-              aria-describedby="emailHelp" value={this.state.email}             onChange={e => this.setState({
-              sender: e.target.value
-            })} placeholder="Email" />
-            </div>
-            
-            <div class="mb-3 pt-0">
-              <input type="text" class=" m-2 rounded-lg border-transparent flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" 
-              value={this.state.objet}             onChange={e => this.setState({
-                sender: e.target.value
-              })} placeholder="Objet"/>
-            </div>
-            
-            <div class="mb-3 pt-0">
-              <textarea class="m-2 form-flex-1 appearance-none border border-[#af9a7d] w-full py-2 px-4 bg-white text-[#af9a7d] placeholder-[#af9a7d] rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-[#af9a7d] focus:border-transparent" 
-              rows="5" value={this.state.message}   onChange={e => this.setState({
               subject: e.target.value
-            })} placeholder="Message" />
+            })}
+            placeholder="Message" />
 
             </div >
             <div class="mb-3 pt-0">
