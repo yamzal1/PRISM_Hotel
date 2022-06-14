@@ -47,7 +47,7 @@ export default class ChambreSeule extends Component {
     return (
       <>
         <StyledHero img={mainImg || this.state.defaultBcg}>
-          <Banniere title={`${name} room`}>
+          <Banniere title={`${name}`}>
             <Link to="/chambres" className="btn-primary">
               Retour aux chambres
             </Link>
