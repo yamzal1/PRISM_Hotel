@@ -50,18 +50,54 @@ const Checkout = (props) => {
                       body: JSON.stringify(selectedRoom)
                   })
                       .then(
-													(result) => {
-															notify()
-													},
+								(result) => {
+							notify()
+						},
                           (error) => {
                               console.log(error)
                           }
                       )
+
+
+
+                      var mailHeaders = new Headers();
+                      mailHeaders.append("cache-control", "no-cache");
+                      mailHeaders.append("content-type", "application/json");
+                      mailHeaders.append("x-apikey", "62a1b0851a51777906aff8ad");
+
+                      var message = "La chambre n°" + JSON.stringify(selectedRoom.id) + ", " + JSON.stringify(selectedRoom.name) + " a été réservée."
+        
+        
+                      fetch("https://dbhotel-bb79.restdb.io/mail", {
+                        method: 'POST',
+                        headers: mailHeaders,
+                        mode: 'cors',
+                        cache: 'default',
+                        body: JSON.stringify({
+                          "to": "reactjshotel@yopmail.com",
+                          "subject": "Une nouvelle réservation a été effectuée !",
+                          "html": message,
+                          "company": "Royal hôtel",
+                          "sendername": "Ne pas répondre"
+                        })
+                      })
+                  
+                        .then(
+                          (error) => {
+                            console.log(error)
+                          }
+                        )
+
+
               },
               (error) => {
                   console.log(error)
-              }
-          )
+              },
+
+
+              )
+              
+              
     }
 
     const notify = () => toast.success("Paiement effectué ! Vous allez recevoir un mail", {
