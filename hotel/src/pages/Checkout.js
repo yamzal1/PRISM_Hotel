@@ -80,7 +80,7 @@ const Checkout = (props) => {
     return (
         <>
             <Hero hero="roomsHero">
-                <Banniere title="Payement">
+                <Banniere title="Paiement">
                 </Banniere>
             </Hero>
             <div className="centrer">
