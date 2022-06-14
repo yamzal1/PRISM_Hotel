@@ -91,6 +91,7 @@ export default function ChambreFilter({rooms}) {
             <input
               type="number"
               name="minSize"
+              min="0"
               value={minSize}
               onChange={handleChange}
               className="size-input"
@@ -98,6 +99,7 @@ export default function ChambreFilter({rooms}) {
             <input
               type="number"
               name="maxSize"
+              min="0"
               value={maxSize}
               onChange={handleChange}
               className="size-input"
