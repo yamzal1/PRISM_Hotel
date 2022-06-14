@@ -14,6 +14,56 @@ const Checkout = (props) => {
 	const dateDeb = dateM[0].split('GMT')
 	const dateFin = dateM[1].split('GMT')
 
+	function reserveRoom() {
+      var slug = location.state.slug;
+      var headers = new Headers();
+      headers.append("cache-control", "no-cache");
+      headers.append("content-type", "application/json")
+      headers.append("x-apikey", "62348bc0dced170e8c83a37c");
+
+      fetch("https://pommedeterre-20df.restdb.io/rest/chambre", {
+          method: 'GET',
+          headers: headers,
+          mode: 'cors',
+          cache: 'default'
+      })
+          .then(res => res.json())
+          .then(
+              (result) => {
+                  let selectedRoom;
+                  result.some(function (room) {
+                      if (room.slug == slug) {
+                          selectedRoom = room;
+                          return true;
+                      }
+                  });
+
+                  selectedRoom.reserved = true;
+                  selectedRoom.begin_date = dateDeb;
+                  selectedRoom.end_date = dateFin;
+
+                  fetch("https://pommedeterre-20df.restdb.io/rest/chambre", {
+                      method: 'POST',
+                      headers: headers,
+                      mode: 'cors',
+                      cache: 'default',
+                      body: JSON.stringify(selectedRoom)
+                  })
+                      .then(
+													(result) => {
+															notify()
+													},
+                          (error) => {
+                              console.log(error)
+                          }
+                      )
+              },
+              (error) => {
+                  console.log(error)
+              }
+          )
+    }
+
     const notify = () => toast.success("Paiement effectué ! Vous allez recevoir un mail", {
         position: "top-center",
         autoClose: 5000,
@@ -34,11 +84,8 @@ const Checkout = (props) => {
                 </Banniere>
             </Hero>
             <div className="centrer">
-                {/* <button onClick={reserveRoom} className="btn-primary">
-                    Reserver la chambre
-                </button> */}
                 <MyCards />
-                <button onClick={notify} className="btn-primary btn-payer">
+                <button onClick={reserveRoom} className="btn-primary btn-payer">
                     Payer
                 </button>
                 <ToastContainer />

@@ -14,7 +14,7 @@ export default class ChambreSeule extends Component {
       slug: this.props.match.params.slug,
       defaultBcg,
     };
-    console.log(this.props);
+    // console.log(this.props);
   }
   static contextType = RoomContext;
 
@@ -86,7 +86,7 @@ export default class ChambreSeule extends Component {
         <div className="groupe">
           <div className="calendar">
             <p>Selectionner vos dates de séjour :</p>
-            <Calendar />
+            <Calendar slug={this.state.slug} />
           </div>
         </div>
       </>
