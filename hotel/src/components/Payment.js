@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
+import { validEmail,validCard,validDateCard,validCrypto  } from "./Regex";
+
 const MyCards = (props) => {
 	
 	const location = useLocation()
@@ -9,17 +11,25 @@ const MyCards = (props) => {
 	const dateM = date.split(',')
 	const dateDeb = dateM[0].split('2022')
 	const dateFin = dateM[0].split('GMT')
+	var validate = false
 	const [data, setData] = useState({
 		cvc: "",
 		expiry: "",
 		name: "",
-		number: ""
+		number: "",
+		email: ""
 	});
 	const handleInputChange = (e) => {
 		setData({
 			...data,
 			[e.target.name]: e.target.value
 		});
+		if (validCard.test(data.number) && validDateCard.test(data.expiry) && validEmail.test(data.email) && validCrypto.test(data.cvc)){
+			console.log('Form right format');
+			validate = true;
+			console.log(validate);
+		}
+
 	};
 
 	return (
@@ -79,5 +89,7 @@ const MyCards = (props) => {
 		</div>
 	);
 };
+
+export const valideForm = MyCards.validate;
 
 export default MyCards;
