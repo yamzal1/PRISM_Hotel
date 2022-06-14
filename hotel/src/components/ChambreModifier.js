@@ -34,24 +34,28 @@ export default function Chambre({ room }) {
     return (
         <article className='room'>
             <div className='img-container'>
-                <img src={images[0] || defaultImg} alt="single room" />
+                <img src={images[0] || defaultImg} style={{ width: '300px', height: '200px', objectFit: 'cover' }} alt="single room" />
                 <div className='price-top'>
                     <h6>{price}€</h6>
                     <p>par nuit</p>
                 </div>
-                <div>
-                    <span>
-                        <FaPen
-                            size={30}
-                        />
-                    </span>
-                    <span onClick={() => suppr(id)}>
-                        <FaRegTrashAlt
-                            size={30}
-                            color="red"
-                        />
-                    </span>
-                </div>
+            </div>
+            <div>
+                <span>
+                    <FaPen
+                        size={30}
+                        cursor="pointer"
+                        title="Modifier"
+                    />
+                </span>
+                <span onClick={() => suppr(id)}>
+                    <FaRegTrashAlt
+                        size={30}
+                        color="red"
+                        cursor="pointer"
+                        title="Supprimer"
+                    />
+                </span>
             </div>
             <p className='room-info'>{name}</p>
         </article>
